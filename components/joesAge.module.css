@@ -1,0 +1,21 @@
+.heading {
+    display: flex; 
+    justify-content: center;
+    font-family: var(--mainFont);
+}
+
+.hisAge {
+    padding: 10px 10px; 
+    font-size: 30px; 
+    display: flex; 
+    justify-content: center; 
+    font-family: 'Impact'; 
+    color: rgb(255, 255, 255); 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+.hisAge:hover{
+    scale: 1.1; 
+    color: blue; 
+}

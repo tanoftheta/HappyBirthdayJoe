@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'RetroFont';
+  src: url('public/assets/slkscr.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Poli';
+  src: url('public/assets/neuropolitical.rg-regular.otf') format('truetype');
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --darkColor: #181818;
+  --lightColor: whitesmoke;
+  --accentColor: rgb(141, 182, 255); 
+  --retroFont: 'RetroFont'; 
+  --mainFont: 'Roboto';
+  --gameFont: 'Poli'; 
+}
+
+*{
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body{
+  background-color: lightskyblue;
+  color: var(--darkColor);
+  display: flex; 
+  flex-direction: column; 
+  min-height: 100vh; 
+  font-family: 'Times New Roman';
+}
+
+header,footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px; 
+}
+
+footer{
+  font-family: var(--retroFont)
+}
+
+
+main {
+  flex: 1; 
+  display: flex; 
+}
+
+#gameCanvas {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1; 
+}
