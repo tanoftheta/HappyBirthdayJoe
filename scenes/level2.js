@@ -176,7 +176,7 @@ class Level2 extends Phaser.Scene {
         setTimeout(() => {
             this.music.stop(); 
             this.scene.stop('Level2');
-            this.scene.start('GameOver');
+            this.scene.start('FinalScreen');
         }, 5000); 
     
     }
