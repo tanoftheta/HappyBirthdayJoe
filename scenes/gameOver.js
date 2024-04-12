@@ -6,7 +6,13 @@ class GameOver extends Phaser.Scene {
     }
 
     preload() {
-        this.load.audio('bgMusic', '/assets/music/hbd_sad.wav');
+        let audioPath; 
+        if (process.env.NODE_ENV === 'development') {
+            audioPath = '/assets/music/hbd_sad.wav';
+        } else {
+            audioPath = '/HappyBirthdayJoe/assets/music/hbd_sad.wav';
+        }
+        this.load.audio('bgMusic', audioPath);
     }
 
     create() {
@@ -23,6 +29,12 @@ class GameOver extends Phaser.Scene {
             fontFamily: 'Roboto',
             fill: 'red'
         }).setOrigin(0.5); 
+
+        const musicText = this.add.text(0, 0, '🎵 click anywhere', {
+            fontFamily: 'Arial',
+            fontSize: 24,
+            color: '#000'
+        }).setOrigin(0.5);
 
         const startButton = this.add.text(400, 400, 'Try again', {
             fontSize: '32px',

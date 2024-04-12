@@ -41,6 +41,13 @@ class StartScreen extends Phaser.Scene {
             fill: 'red'
         }).setOrigin(0.5); 
         // Add the start button
+
+        const musicText = this.add.text(100, 20, '🎵 click anywhere', {
+            fontFamily: 'RetroFont',
+            fontSize: 14,
+            color: '#000'
+        }).setOrigin(0.5);
+
         const startButton = this.add.text(400, 400, 'Start', {
             fontSize: '32px',
             fontFamily: 'RetroFont', 
