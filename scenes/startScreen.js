@@ -6,14 +6,9 @@ class StartScreen extends Phaser.Scene {
     }
 
     preload() {
-        import('/assets/25.png').then(module => {
-            this.load.image('twentyfive', module.default);
-        });
-        import('/assets/music/hbd_classic.wav').then(module => {
-            this.load.audio('backgroundMusic', module.default);
-        });
+        this.load.image('twentyfive', '/assets/25.png');
+        this.load.audio('backgroundMusic', '/assets/music/hbd_classic.wav');
     }
-
 
     create() {
         // Set the background color to white
