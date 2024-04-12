@@ -6,8 +6,17 @@ class StartScreen extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('twentyfive', '/assets/25.png');
-        this.load.audio('backgroundMusic', '/assets/music/hbd_classic.wav');
+        let imagePath, audioPath;
+
+        if (process.env.NODE_ENV === 'development') {
+            imagePath = '/assets/25.png';
+            audioPath = '/assets/music/hbd_classic.wav';
+        } else {
+            imagePath = '/HappyBirthdayJoe/assets/25.png';
+            audioPath = '/HappyBirthdayJoe/assets/music/hbd_classic.wav';
+        }
+        this.load.image('twentyfive', imagePath);
+        this.load.audio('backgroundMusic', audioPath);
     }
 
     create() {
