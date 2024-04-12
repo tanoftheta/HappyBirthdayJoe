@@ -3,6 +3,7 @@ import Phaser from 'phaser';
 class GameOver extends Phaser.Scene {
     constructor() {
         super('GameOver');
+        this.music = null; 
     }
 
     preload() {
@@ -51,11 +52,14 @@ class GameOver extends Phaser.Scene {
             startButton.setScale(1.0); 
         });
 
-        const music = this.sound.add('bgMusic', {loop:true});
-        music.play();
+        if (!this.music) {
+            this.music = this.sound.add('bgMusic', {loop:true});
+            this.music.play();
+        }
         // Start level1 scene when the button is clicked
         startButton.on('pointerdown', () => {
-            music.stop(); 
+            this.music.stop(); 
+            this.music= null ; 
             this.scene.stop('GameOver');
             this.scene.start('startScreen');
         });

@@ -8,6 +8,7 @@ class Level2 extends Phaser.Scene {
         this.remainingTime; 
         this.clockTime; 
         this.music = null;
+        this.clockTicking;
     }
 
     preload() {
@@ -31,6 +32,8 @@ class Level2 extends Phaser.Scene {
         this.load.audio('housePartyMusic', `${audioPath}hbd_rock.wav`);
         this.load.audio('canFx', `${audioPath}soundEffects/canOpen.wav`)
         this.load.audio('alarm', `${audioPath}soundEffects/clockTicking.wav`)
+        this.load.audio('clockTicking', `${audioPath}soundEffects/alarm.wav`)
+        this.load.audio('success', `${audioPath}soundEffects/success.wav`)
         
     }
 
@@ -39,6 +42,8 @@ class Level2 extends Phaser.Scene {
             this.music = this.sound.add('housePartyMusic', {loop:true});
             this.music.play();
         }
+        this.clockTicking = this.sound.add('clockTicking'); 
+        this.clockTicking.play(); 
         this.music.play();
         this.add.image(0,0, 'backgroundImage').setOrigin(0,0);
         this.clock = this.add.image(400, 100, 'clock').setOrigin(0.5);
@@ -142,24 +147,61 @@ class Level2 extends Phaser.Scene {
         });
     }
     onAllCansDestroyed() {
-        console.log('cleared!'); 
+        this.clockTicking.stop(); 
+        const success = this.sound.add('success'); 
+        success.play(); 
+
+
+        const background = this.add.rectangle(400, 300, 500, 200, 0xffffff);
+        background.setDepth(10); // Ensure it's above everything else
+        background.setAlpha(0.7); // Adjust transparency if needed
+    
+        // Add the success message
+        const successText = this.add.text(0, 0, 'Success!', {
+            fontFamily: 'Arial',
+            fontSize: '32px',
+            fill: '#000000'
+        }).setOrigin(0.5);
+        successText.setDepth(11); // Ensure it's above the background
+    
+        const extraText = this.add.text(400, 350, 'Watch out for those nosey neighbors though...', {
+            fontFamily: 'Arial',
+            fontSize: '20px',
+            fill: '#000000'
+        }).setOrigin(0.5);
+        extraText.setDepth(11); 
+
+        // Center the success message and background
+        Phaser.Display.Align.In.Center(successText, background);
+        setTimeout(() => {
+            this.music.stop(); 
+            this.scene.stop('Level2');
+            this.scene.start('GameOver');
+        }, 5000); 
+    
     }
 
     gameOver(){
-        this.clockTime.setFill('red'); 
-        this.cans.forEach(can => {
-            can.setDepth(5);
-            const yellowCircle = this.add.circle(can.x, can.y, 40, 0xffff00);
-            yellowCircle.setStrokeStyle(2, 0xffff00);
-        });
-        const alarm = this.sound.add('alarm');
+        if (this.cans.length > 0 ){
+            this.clockTicking.stop(); 
+            this.clockTime.setFill('red'); 
+            this.cans.forEach(can => {
+                can.setDepth(5);
+                const yellowCircle = this.add.circle(can.x, can.y, 40, 0xffff00);
+                yellowCircle.setStrokeStyle(2, 0xffff00);
+                yellowCircle.setDepth(4); 
+                can.disableInteractive(); 
+            });
+            const alarm = this.sound.add('alarm');
 
-        alarm.once('complete', () => {
-            this.music.stop(); 
-            this.scene.stop('StartScreen');
-            this.scene.start('GameOver');
-        });
-        alarm.play();
+            alarm.once('complete', () => {
+                this.music.stop(); 
+                this.scene.stop('Level2');
+                this.scene.start('GameOver');
+            });
+            
+            alarm.play();
+        }
     }
     
 }

@@ -4,6 +4,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import TimeSince from './components/joesAge'; 
 import Level1 from './scenes/level1';
+import Level2instructions from './scenes/instructions/level2instructions';
 import Level2 from './scenes/level2';
 import StartScreen from './scenes/startScreen';
 import GameOver from './scenes/gameOver';
@@ -30,7 +31,7 @@ const config = {
       debug: false
     }
   },
-  scene: [Level2, GameOver]
+  scene: [StartScreen, Level2instructions, Level2, GameOver]
 }
 
 const game = new Phaser.Game(config); 
