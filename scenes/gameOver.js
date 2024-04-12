@@ -19,7 +19,7 @@ class GameOver extends Phaser.Scene {
         // Set the background color to black
         this.cameras.main.setBackgroundColor('#000');
 
-        const text = this.add.text(400, 200, 'Game Over', {
+        const text = this.add.text(400, 200, 'GAME OVER', {
             fontSize: 100,
             fontFamily: 'Impact',
             fill: 'red'
@@ -29,12 +29,6 @@ class GameOver extends Phaser.Scene {
             fontFamily: 'Roboto',
             fill: 'red'
         }).setOrigin(0.5); 
-
-        const musicText = this.add.text(0, 0, '🎵 click anywhere', {
-            fontFamily: 'Arial',
-            fontSize: 24,
-            color: '#000'
-        }).setOrigin(0.5);
 
         const startButton = this.add.text(400, 400, 'Try again', {
             fontSize: '32px',
