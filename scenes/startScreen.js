@@ -6,8 +6,8 @@ class StartScreen extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('twentyfive', '/public/assets/25.png');
-        this.load.audio('backgroundMusic', 'public/assets/music/hbd_classic.wav');
+        this.load.image('twentyfive', '/assets/25.png');
+        this.load.audio('backgroundMusic', '/assets/music/hbd_classic.wav');
     }
 
     create() {

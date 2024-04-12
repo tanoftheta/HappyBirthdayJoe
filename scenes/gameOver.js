@@ -6,7 +6,7 @@ class GameOver extends Phaser.Scene {
     }
 
     preload() {
-        this.load.audio('bgMusic', 'public/assets/music/hbd_sad.wav');
+        this.load.audio('bgMusic', '/assets/music/hbd_sad.wav');
     }
 
     create() {
