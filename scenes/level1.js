@@ -6,7 +6,9 @@ class Level1 extends Phaser.Scene {
         super('level1');
         this.walls = []; 
         this.player;
-        this.success = null ; 
+        this.success = null;
+        this.gameOverSound = null; 
+        this.music = null; 
     }
 
     preload() {
@@ -23,9 +25,16 @@ class Level1 extends Phaser.Scene {
         this.load.image('petridish', `${imagePath}petridish.PNG`);
         this.load.audio('success', `${audioPath}soundEffects/success.wav`)
         this.load.audio('gameOver', `${audioPath}soundEffects/gameOver.wav`)
+        this.load.audio('lullaby', `${audioPath}hbd_lullaby.wav`)
     }
 
     create() {
+
+        if (!this.music) {
+            this.music = this.sound.add('lullaby', {loop:true});
+            this.music.play();
+        }
+
         this.input.setDefaultCursor('none');
 
         const mazeWidth = 8;
@@ -92,21 +101,18 @@ class Level1 extends Phaser.Scene {
         this.input.on('pointermove', pointer => {
             this.player.x = pointer.x;
             this.player.y = pointer.y;
-
-            this.walls.forEach(wall => {
-                if (Phaser.Geom.Rectangle.Contains(wall.getBounds(), pointer.x, pointer.y)) {
-                    wall.setFillStyle(0xff0000);
-                } else {
-                    wall.setFillStyle(0xffffff);
-                }
-            });
         });
 
         this.physics.add.overlap(this.player, petridish, this.gameWon, null, this);
+
+        this.physics.add.overlap(this.player, this.walls, (player, wall) => {
+            this.gameOver(wall);
+        }, null, this);
     }
     
     gameWon(){
         if (!this.success){
+        this.input.setDefaultCursor('');
         this.success = this.sound.add('success'); 
         this.success.play();
         }
@@ -119,10 +125,35 @@ class Level1 extends Phaser.Scene {
         successText.setDepth(11);
 
         setTimeout(() => {
-            this.succes= null; 
+            this.success= null; 
+            this.music.stop(); 
             this.scene.stop('level1');
             this.scene.start('level2instructions');
         }, 4000); 
+    }
+
+    gameOver(wall){
+        this.input.setDefaultCursor('');
+        if (!this.gameOverSound){
+            this.gameOverSound = this.sound.add('gameOver'); 
+            this.gameOverSound.play();
+            }
+        wall.setFillStyle(0xff0000);
+        this.input.off('pointermove', this.pointerMoveListener);
+
+        const gameOverText = this.add.text(400, 250, 'WE LOST U SWIMMER :(', {
+            fontFamily: 'RetroFont',
+            fontSize: '32px',
+            fill: '#FF0000'
+        }).setOrigin(0.5);
+        gameOverText.setDepth(11);
+
+        setTimeout(() => {
+            this.gameOverSound = null ;
+            this.music.stop();
+            this.scene.stop('level1');
+            this.scene.start('GameOver');
+        }, 3000); 
     }
 }
 
