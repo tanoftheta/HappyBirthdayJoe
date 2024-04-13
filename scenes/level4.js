@@ -105,22 +105,6 @@ class Level4 extends Phaser.Scene {
         this.ScoreText.setText(`Number of Brain Cells Collected: ${this.score}`);
         for (const brainCell of this.brainCells) {
             if (brainCell.y >= 500) {
-                this.score--; 
-                const text = this.add.text(brainCell.x, brainCell.y, `-1`, {
-                    fontFamily: 'Arial',
-                    fontSize: 16,
-                    color: '#ff0000',
-                }).setOrigin(0.5);
-            
-                this.tweens.add({
-                    targets: text,
-                    y: '-=50',
-                    alpha: 0,
-                    duration: 1000,
-                    onComplete: () => {
-                        text.destroy();
-                    }
-                });
                 brainCell.setY(0); 
                 brainCell.setX(Phaser.Math.Between(10, 790));
             }
@@ -200,7 +184,7 @@ class Level4 extends Phaser.Scene {
             this.successSound = this.sound.add('success'); 
             this.successSound.play(); 
         }
-        const successText = this.add.text(400, 250, 'UR BRAIN IS GROWN!', {
+        const successText = this.add.text(400, 250, 'FULL FRONTAL LOBE!', {
             fontFamily: 'RetroFont',
             fontSize: '32px',
             fill: '#76ea7c'

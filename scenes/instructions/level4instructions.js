@@ -33,7 +33,7 @@ class Level4instructions extends Phaser.Scene {
         const header = this.add.text(400, 100, 'LEVEL: FULLY DEVELOPED FRONTAL LOBE', {
             fontSize: '35px',
         }).setOrigin(0.5); 
-        const instructions = this.add.text(400, 250, 'Congratulations on turning 25 and having a fully developed brain. \n Collect a brain cell for every year to win. \n Dont miss any either! \n Watch out for the drugs that look eerily identical, \n those kill a random number of brain cells, between 2-5. \n if you reach a negative number of brain cells, game over.', {
+        const instructions = this.add.text(400, 250, 'Congratulations on turning 25 and having a fully developed brain. \n Collect a brain cell for every year to win. \n Watch out for drugs! they look eerily similar to brain cells, \n but those kill a random number of brain cells, between 2-5. \n if you reach a negative number of brain cells, game over.', {
             fontSize: '20px',
         }).setOrigin(0.5); 
         this.cameras.main.setBackgroundColor('#FFC0CB');
