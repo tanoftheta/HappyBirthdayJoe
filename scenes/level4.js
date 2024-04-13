@@ -193,6 +193,7 @@ class Level4 extends Phaser.Scene {
         setTimeout(() => {
             this.successSound = null; 
             this.music.stop(); 
+            this.music = null; 
             this.scene.stop('Level4');
             this.scene.start('FinalScreen');
         }, 4000); 
@@ -220,6 +221,7 @@ class Level4 extends Phaser.Scene {
         setTimeout(() => {
             this.gameOverSound = null ; 
             this.music.stop(); 
+            this.music = null; 
             this.scene.stop('Level4');
             this.scene.start('GameOver');
         }, 3000); 

@@ -3,6 +3,7 @@ import Phaser from 'phaser';
 class StartScreen extends Phaser.Scene {
     constructor() {
         super('startScreen');
+        this.music = null; 
     }
 
     preload() {
@@ -22,8 +23,10 @@ class StartScreen extends Phaser.Scene {
     create() {
         // Set the background color to white
         this.bounceCount = 0;
-        const music = this.sound.add('backgroundMusic', {loop:true});
-        music.play();
+        if (!this.music) {
+            this.music = this.sound.add('backgroundMusic', {loop:true});
+            this.music.play();
+        }
         const speedDown = 300; 
         this.cameras.main.setBackgroundColor('#ffffff');
 
@@ -71,7 +74,8 @@ class StartScreen extends Phaser.Scene {
 
         // Start level1 scene when the button is clicked
         startButton.on('pointerdown', () => {
-            music.stop(); 
+            this.music.stop()
+            this.music = null' 
             this.scene.stop('StartScreen');
             this.scene.start('level1instructions');
         });
