@@ -125,6 +125,7 @@ class Level1 extends Phaser.Scene {
         successText.setDepth(11);
 
         setTimeout(() => {
+            this.walls = []; 
             this.success= null; 
             this.music.stop(); 
             this.music = null ; 
@@ -150,6 +151,7 @@ class Level1 extends Phaser.Scene {
         gameOverText.setDepth(11);
 
         setTimeout(() => {
+            this.walls = []; 
             this.gameOverSound = null ;
             this.music.stop();
             this.music = null; 
