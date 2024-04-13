@@ -3,6 +3,7 @@ import Phaser from 'phaser';
 class Level2instructions extends Phaser.Scene {
     constructor() {
         super('level2instructions');
+        this.music = null; 
     }
 
     preload() {
@@ -23,8 +24,10 @@ class Level2instructions extends Phaser.Scene {
     }
 
     create() {
-        const music = this.sound.add('housePartyMusic', {loop:true});
-        music.play(); 
+        if (!this.music) {
+            this.music = this.sound.add('housePartyMusic', {loop:true});
+            this.music.play();
+        }
         const header = this.add.text(400, 100, 'LEVEL: TEEN HOUSE PARTY', {
             fontSize: '45px',
         }).setOrigin(0.5); 
@@ -62,7 +65,8 @@ class Level2instructions extends Phaser.Scene {
 
         // Start level1 scene when the button is clicked
         playButton.on('pointerdown', () => {
-            music.stop();
+            this.music.stop()
+            this.music = null; 
             this.scene.stop('level2instructions');
             this.scene.start('level2');
         });
