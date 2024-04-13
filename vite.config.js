@@ -2,7 +2,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/HappyBirthdayJoe/',
+  base: '/happybirthdayjoe/',
   build: {
     chunkSizeWarningLimit: 1024 * 1000, 
   },
