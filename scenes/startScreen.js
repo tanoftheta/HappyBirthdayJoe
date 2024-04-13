@@ -12,8 +12,8 @@ class StartScreen extends Phaser.Scene {
             imagePath = '/assets/25.png';
             audioPath = '/assets/music/hbd_classic.wav';
         } else {
-            imagePath = '/HappyBirthdayJoe/assets/25.png';
-            audioPath = '/HappyBirthdayJoe/assets/music/hbd_classic.wav';
+            imagePath = '/happybirthdayjoe/assets/25.png';
+            audioPath = '/happybirthdayjoe/assets/music/hbd_classic.wav';
         }
         this.load.image('twentyfive', imagePath);
         this.load.audio('backgroundMusic', audioPath);

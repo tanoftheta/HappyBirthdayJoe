@@ -17,8 +17,8 @@ class Level2 extends Phaser.Scene {
             imagePath = '/assets/sprites/teenHouseParty/';
             audioPath = '/assets/music/';
         } else {
-            imagePath = '/HappyBirthdayJoe/assets/sprites/teenHouseParty/';
-            audioPath = '/HappyBirthdayJoe/assets/music/';
+            imagePath = '/happybirthdayjoe/assets/sprites/teenHouseParty/';
+            audioPath = '/happybirthdayjoe/assets/music/';
         }
         this.load.image('backgroundImage', `${imagePath}housePartyBG.PNG`);
         this.load.image('couch',`${imagePath}couch.PNG`); 

@@ -12,8 +12,8 @@ class Level4instructions extends Phaser.Scene {
             audioPath = '/assets/music/';
             imagePath = '/assets/sprites/frontalLobe/';
         } else {
-            audioPath = '/HappyBirthdayJoe/assets/music/'; 
-            imagePath = '/HappyBirthdayJoe/assets/sprites/frontalLobe/';
+            audioPath = '/happybirthdayjoe/assets/music/'; 
+            imagePath = '/happybirthdayjoe/assets/sprites/frontalLobe/';
         }
         this.load.audio('techHBD', `${audioPath}hbd_tech.wav`);
         this.load.image('arrowKeys', `${imagePath}arrowkeys.PNG`);

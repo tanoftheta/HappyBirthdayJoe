@@ -12,16 +12,16 @@ class FinalScreen extends Phaser.Scene {
             imagePath = '/assets/';
             audioPath = '/assets/music/';
         } else {
-            imagePath = '/HappyBirthdayJoe/assets/';
-            audioPath = '/HappyBirthdayJoe/assets/music/';
+            imagePath = '/happybirthdayjoe/assets/';
+            audioPath = '/happybirthdayjoe/assets/music/';
         }
         this.load.image('finalScreen', `${imagePath}finalScreen.jpeg`); 
-        this.load.audio('happyBirthdayJoe', `${audioPath}happyBirthdayJoe.wav`);
+        this.load.audio('happybirthdayjoe', `${audioPath}happybirthdayjoe.wav`);
     }
 
     create() {
         if (!this.music) {
-            this.music = this.sound.add('happyBirthdayJoe');
+            this.music = this.sound.add('happybirthdayjoe');
             this.music.play();
         }
         const bg = this.add.image(400,240, 'finalScreen').setOrigin(0.5);
