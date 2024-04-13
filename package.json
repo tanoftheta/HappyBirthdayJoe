@@ -12,6 +12,8 @@
     "vite": "^5.2.0"
   },
   "dependencies": {
+    "generate-maze": "^1.1.0",
+    "maze-generator": "^0.1.2",
     "phaser": "^3.80.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

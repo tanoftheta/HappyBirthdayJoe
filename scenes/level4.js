@@ -50,7 +50,7 @@ class Level4 extends Phaser.Scene {
         for (let i = 0; i < numberofBrainCells; i++){
             const x = Phaser.Math.Between(10, 790);
             const y = 50;
-            const velocityY = Phaser.Math.Between(150, 250);
+            const velocityY = Phaser.Math.Between(150, 300);
             const brainCell = this.physics.add.sprite(x, y, 'brainCell'); // Create a sprite
             brainCell.setScale(0.1); // Adjust scale if needed
     
@@ -62,11 +62,11 @@ class Level4 extends Phaser.Scene {
             this.brainCells.push(brainCell); 
         }
 
-        const numberofDrugs = 2; 
+        const numberofDrugs = 3; 
         for (let i = 0; i < numberofDrugs; i++){
             const x = Phaser.Math.Between(10, 790);
             const y = 50;
-            const velocityY = Phaser.Math.Between(100, 150);
+            const velocityY = Phaser.Math.Between(150, 300);
             const drug = this.physics.add.sprite(x, y, 'drug');
             drug.setScale(0.4); 
 
