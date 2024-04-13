@@ -175,8 +175,8 @@ class Level2 extends Phaser.Scene {
         Phaser.Display.Align.In.Center(successText, background);
         setTimeout(() => {
             this.music.stop(); 
-            this.scene.stop('Level2');
-            this.scene.start('FinalScreen');
+            this.scene.stop('level2');
+            this.scene.start('level4instructions');
         }, 5000); 
     
     }
