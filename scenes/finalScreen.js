@@ -16,7 +16,7 @@ class FinalScreen extends Phaser.Scene {
             audioPath = '/happybirthdayjoe/assets/music/';
         }
         this.load.image('finalScreen', `${imagePath}finalScreen.jpeg`); 
-        this.load.audio('happybirthdayjoe', `${audioPath}happybirthdayjoe.wav`);
+        this.load.audio('happybirthdayjoe', `${audioPath}happyBirthdayJoe.wav`);
     }
 
     create() {

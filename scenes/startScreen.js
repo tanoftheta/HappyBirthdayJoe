@@ -75,7 +75,7 @@ class StartScreen extends Phaser.Scene {
         // Start level1 scene when the button is clicked
         startButton.on('pointerdown', () => {
             this.music.stop()
-            this.music = null' 
+            this.music = null; 
             this.scene.stop('StartScreen');
             this.scene.start('level1instructions');
         });

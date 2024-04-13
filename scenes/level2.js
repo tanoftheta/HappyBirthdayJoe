@@ -175,6 +175,7 @@ class Level2 extends Phaser.Scene {
         Phaser.Display.Align.In.Center(successText, background);
         setTimeout(() => {
             this.music.stop(); 
+            this.music = null; 
             this.scene.stop('level2');
             this.scene.start('level4instructions');
         }, 5000); 
@@ -196,6 +197,7 @@ class Level2 extends Phaser.Scene {
 
             alarm.once('complete', () => {
                 this.music.stop(); 
+                this.music = null;
                 this.scene.stop('Level2');
                 this.scene.start('GameOver');
             });
