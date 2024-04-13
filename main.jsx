@@ -11,6 +11,7 @@ import GameOver from './scenes/gameOver';
 import FinalScreen from './scenes/finalScreen';
 import Level4instructions from './scenes/instructions/level4instructions'
 import Level4 from './scenes/level4';
+import Level1instructions from './scenes/instructions/level1instructions';
 
 const rootElement = document.getElementById('header');
 const root = createRoot(rootElement);
@@ -34,7 +35,7 @@ const config = {
       debug: false
     }
   },
-  scene: [Level1, StartScreen, Level2instructions, Level2, Level4instructions, Level4, GameOver, FinalScreen]
+  scene: [StartScreen, Level1instructions, Level1, Level2instructions, Level2, Level4instructions, Level4, GameOver, FinalScreen]
 }
 
 const game = new Phaser.Game(config); 

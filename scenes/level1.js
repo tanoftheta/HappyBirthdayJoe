@@ -111,12 +111,12 @@ class Level1 extends Phaser.Scene {
     }
     
     gameWon(){
+        this.input.off('pointermove', this.pointerMoveListener);
         if (!this.success){
         this.input.setDefaultCursor('');
         this.success = this.sound.add('success'); 
         this.success.play();
         }
-
         const successText = this.add.text(400, 250, 'ARTIFICIALLY INSEMINATED!', {
             fontFamily: 'RetroFont',
             fontSize: '32px',
@@ -133,13 +133,13 @@ class Level1 extends Phaser.Scene {
     }
 
     gameOver(wall){
+        this.input.off('pointermove', this.pointerMoveListener);
         this.input.setDefaultCursor('');
         if (!this.gameOverSound){
             this.gameOverSound = this.sound.add('gameOver'); 
             this.gameOverSound.play();
             }
         wall.setFillStyle(0xff0000);
-        this.input.off('pointermove', this.pointerMoveListener);
 
         const gameOverText = this.add.text(400, 250, 'WE LOST U SWIMMER :(', {
             fontFamily: 'RetroFont',
