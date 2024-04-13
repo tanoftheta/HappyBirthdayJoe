@@ -65,6 +65,7 @@ class Level1instructions extends Phaser.Scene {
         // Start level1 scene when the button is clicked
         playButton.on('pointerdown', () => {
             this.music.stop();
+            this.music = null; 
             this.scene.stop('level1instructions');
             this.scene.start('level1');
         });
