@@ -171,7 +171,9 @@ class Level4 extends Phaser.Scene {
     }
 
     gameWon(){
-        this.player.setVelocity(0);
+        if (this.player && this.player.setVelocity){
+            this.player.setVelocity(0);
+        }
         if (this.brainCells) {
             for (const brainCell of this.brainCells) {
                 if (brainCell && brainCell.setVelocity) {
@@ -210,7 +212,9 @@ class Level4 extends Phaser.Scene {
     
     gameOver(){
         this.ScoreText.setFill('red');
-        this.player.setVelocity(0);
+        if (this.player && this.player.setVelocity){
+            this.player.setVelocity(0);
+        }
         if (this.brainCells) {
             for (const brainCell of this.brainCells) {
                 if (brainCell) {
