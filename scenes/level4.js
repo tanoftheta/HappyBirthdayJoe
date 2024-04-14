@@ -172,11 +172,19 @@ class Level4 extends Phaser.Scene {
 
     gameWon(){
         this.player.setVelocity(0);
-        for (const brainCell of this.brainCells) {
-            brainCell.setVelocity(0);
+        if (this.brainCells) {
+            for (const brainCell of this.brainCells) {
+                if (brainCell) {
+                    brainCell.setVelocity(0);
+                }
+            }
         }
-        for (const drug of this.drugs) {
-            drug.setVelocity(0);
+        if (this.drugs) {
+            for (const drug of this.drugs) {
+                if (drug) {
+                    drug.setVelocity(0);
+                }
+            }
         }
     
         this.ScoreText.setFill('green');
@@ -203,11 +211,19 @@ class Level4 extends Phaser.Scene {
     gameOver(){
         this.ScoreText.setFill('red');
         this.player.setVelocity(0);
-        for (const brainCell of this.brainCells) {
-            brainCell.setVelocity(0);
+        if (this.brainCells) {
+            for (const brainCell of this.brainCells) {
+                if (brainCell) {
+                    brainCell.setVelocity(0);
+                }
+            }
         }
-        for (const drug of this.drugs) {
-            drug.setVelocity(0);
+        if (this.drugs) {
+            for (const drug of this.drugs) {
+                if (drug) {
+                    drug.setVelocity(0);
+                }
+            }
         }
         if (!this.gameOverSound){
         this.gameOverSound = this.sound.add('gameOver'); 

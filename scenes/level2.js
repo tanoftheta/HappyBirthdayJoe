@@ -71,7 +71,7 @@ class Level2 extends Phaser.Scene {
         this.physics.add.existing(this.trash);
         this.trash.body.setAllowGravity(false); 
 
-        const numberOfCans = Phaser.Math.Between(10, 20);
+        const numberOfCans = Phaser.Math.Between(8, 15);
 
         // Add each can to the array as you create them
         for (let i = 0; i < numberOfCans; i++) {
