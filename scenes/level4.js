@@ -174,14 +174,14 @@ class Level4 extends Phaser.Scene {
         this.player.setVelocity(0);
         if (this.brainCells) {
             for (const brainCell of this.brainCells) {
-                if (brainCell) {
+                if (brainCell && brainCell.setVelocity) {
                     brainCell.setVelocity(0);
                 }
             }
         }
         if (this.drugs) {
             for (const drug of this.drugs) {
-                if (drug) {
+                if (drug && drug.setVelocity) {
                     drug.setVelocity(0);
                 }
             }
