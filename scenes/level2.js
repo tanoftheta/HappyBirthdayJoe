@@ -196,6 +196,7 @@ class Level2 extends Phaser.Scene {
             const alarm = this.sound.add('alarm');
 
             alarm.once('complete', () => {
+                this.cans = [];
                 this.music.stop(); 
                 this.music = null;
                 this.scene.stop('Level2');
