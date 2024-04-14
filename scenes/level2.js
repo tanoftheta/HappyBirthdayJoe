@@ -177,7 +177,7 @@ class Level2 extends Phaser.Scene {
             this.music.stop(); 
             this.music = null; 
             this.scene.stop('level2');
-            this.scene.start('level4instructions');
+            this.scene.start('level3instructions');
         }, 5000); 
     
     }
