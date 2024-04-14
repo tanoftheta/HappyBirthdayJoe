@@ -10,8 +10,8 @@ class StartScreen extends Phaser.Scene {
         let imagePath, audioPath;
 
         if (process.env.NODE_ENV === 'development') {
-            imagePath = '/assets/25.png';
-            audioPath = '/assets/music/hbd_classic.wav';
+            imagePath = 'public/assets/25.png';
+            audioPath = 'public/assets/music/hbd_classic.wav';
         } else {
             imagePath = '/happybirthdayjoe/assets/25.png';
             audioPath = '/happybirthdayjoe/assets/music/hbd_classic.wav';

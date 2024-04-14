@@ -14,8 +14,8 @@ class Level2 extends Phaser.Scene {
     preload() {
         let imagePath, audioPath; 
         if (process.env.NODE_ENV === 'development') {
-            imagePath = '/assets/sprites/teenHouseParty/';
-            audioPath = '/assets/music/';
+            imagePath = 'public/assets/sprites/teenHouseParty/';
+            audioPath = 'public/assets/music/';
         } else {
             imagePath = '/happybirthdayjoe/assets/sprites/teenHouseParty/';
             audioPath = '/happybirthdayjoe/assets/music/';
@@ -54,15 +54,15 @@ class Level2 extends Phaser.Scene {
             fill: '#000',
         }).setOrigin(0.5);
 
-        this.couch = this.add.image(200,350, 'couch').setOrigin(0.5);
+        this.couch = this.add.image(200,340, 'couch').setOrigin(0.5);
         this.couch.setDepth(1);  
         this.couch.setInteractive(); 
-        this.chair = this.add.image(700, 350, 'chair').setOrigin(0.5);
-        this.chair.setScale(2.4); 
+        this.chair = this.add.image(700, 335, 'chair').setOrigin(0.5);
+        this.chair.setScale(1.4); 
         this.chair.setDepth(2);  
         this.chair.setInteractive(); 
-        this.table = this.add.image(600, 350, 'table').setOrigin(0.5);
-        this.table.setScale(2.4); 
+        this.table = this.add.image(600, 370, 'table').setOrigin(0.5);
+        this.table.setScale(1.8); 
         this.table.setDepth(3); 
         this.table.setInteractive(); 
         this.trash = this.add.image(450, 400, 'trash').setOrigin(0.5);
