@@ -18,8 +18,8 @@ class Level4 extends Phaser.Scene {
     preload() {
         let imagePath, audioPath; 
         if (process.env.NODE_ENV === 'development') {
-            audioPath = '/assets/music/';
-            imagePath = '/assets/sprites/frontalLobe/';
+            audioPath = 'public/assets/music/';
+            imagePath = 'public/assets/sprites/frontalLobe/';
         } else {
             imagePath = '/happybirthdayjoe/assets/sprites/frontalLobe/';
             audioPath = '/happybirthdayjoe/assets/music/';

@@ -9,8 +9,8 @@ class Level2instructions extends Phaser.Scene {
     preload() {
         let imagePath, audioPath; 
         if (process.env.NODE_ENV === 'development') {
-            imagePath = '/assets/sprites/teenHouseParty/';
-            audioPath = '/assets/music/';
+            imagePath = 'public/assets/sprites/teenHouseParty/';
+            audioPath = 'public/assets/music/';
         } else {
             imagePath = '/happybirthdayjoe/assets/sprites/teenHouseParty/';
             audioPath = '/happybirthdayjoe/assets/music/';

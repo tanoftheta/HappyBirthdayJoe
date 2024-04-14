@@ -9,7 +9,7 @@ class GameOver extends Phaser.Scene {
     preload() {
         let audioPath; 
         if (process.env.NODE_ENV === 'development') {
-            audioPath = '/assets/music/hbd_sad.wav';
+            audioPath = 'public/assets/music/hbd_sad.wav';
         } else {
             audioPath = '/happybirthdayjoe/assets/music/hbd_sad.wav';
         }
