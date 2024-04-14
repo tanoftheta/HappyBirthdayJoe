@@ -9,8 +9,8 @@ class FinalScreen extends Phaser.Scene {
     preload() {
         let imagePath, audioPath; 
         if (process.env.NODE_ENV === 'development') {
-            imagePath = '/assets/';
-            audioPath = '/assets/music/';
+            imagePath = 'public/assets/';
+            audioPath = 'public/assets/music/';
         } else {
             imagePath = '/happybirthdayjoe/assets/';
             audioPath = '/happybirthdayjoe/assets/music/';
@@ -24,7 +24,7 @@ class FinalScreen extends Phaser.Scene {
             this.music = this.sound.add('happybirthdayjoe');
             this.music.play();
         }
-        const bg = this.add.image(400,240, 'finalScreen').setOrigin(0.5);
+        const bg = this.add.image(400,228, 'finalScreen').setOrigin(0.5);
         bg.setScale(.40); 
 
         const startButton = this.add.text(600, 450, 'Play Again', {
