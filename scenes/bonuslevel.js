@@ -3,10 +3,13 @@ import Phaser from 'phaser';
 class BonusLevel extends Phaser.Scene{
     constructor(){
         super('BonusLevel');
+        this.movesLeft = 8;
+        this.movesLeftText ; 
         this.pieces = []; 
         this.swaps = [];
         this.success = null;
         this.music = null ;
+        this.gameOverSound = null; 
     }
 
     preload() {
@@ -25,6 +28,7 @@ class BonusLevel extends Phaser.Scene{
         this.load.audio('success', `${audioPath}soundEffects/success.wav`);
         this.load.audio('happybirthday', `${audioPath}hbd_spongebob.wav`);
         this.load.audio('draw', `${audioPath}soundEffects/cardDraw.mp3`);
+        this.load.audio('gameOver', `${audioPath}soundEffects/gameOver.wav`); 
     }
 
     create(){
@@ -32,6 +36,13 @@ class BonusLevel extends Phaser.Scene{
             this.music = this.sound.add('happybirthday', {loop:true});
             this.music.play();
         }
+
+        this.movesLeftText = this.add.text(50, 50, `moves left: ${this.movesLeft}`, {
+            fontFamily: 'RetroFont', 
+            fill: '#FFF',
+            fontSize: '20px', 
+        })
+
         let tempPieces = []; 
 
         // Create and position the pieces in a 3x3 grid
@@ -83,6 +94,11 @@ class BonusLevel extends Phaser.Scene{
     }
 
     update(){
+
+        if (this.movesLeft <= 0){
+            this.gameOver();
+        }
+        this.movesLeftText.setText(`moves left: ${this.movesLeft}`); 
         const expectedTextureKeys = [
             'joe1', 'joe2', 'joe3', 
             'joe4', 'joe5', 'joe6', 
@@ -121,6 +137,7 @@ class BonusLevel extends Phaser.Scene{
                 soundEffect.destroy();
             });
         this.swaps = [];
+        this.movesLeft --; 
     }
     }
     gameWon(){
@@ -148,6 +165,7 @@ class BonusLevel extends Phaser.Scene{
         });
 
         setTimeout(() => {
+            this.movesLeft = 8;
             this.success = null 
             this.pieces = []; 
             this.swaps = []; 
@@ -157,6 +175,34 @@ class BonusLevel extends Phaser.Scene{
             this.scene.start('level2instructions');
         }, 3000); 
         
+    }
+
+    gameOver(){
+        this.movesLeftText.setFill('#FF0000');
+
+        if (!this.gameOverSound){
+            this.gameOverSound = this.sound.add('gameOver'); 
+            this.gameOverSound.play();
+        }
+
+        const gameOverText = this.add.text(400, 250, 'WHAT ABOUT UR CHINESE GENES ?!', {
+            fontFamily: 'RetroFont',
+            fontSize: '32px',
+            fill: '#FF0000'
+        }).setOrigin(0.5);
+        gameOverText.setDepth(11);
+
+        setTimeout(() => {
+            this.movesLeft = 8;
+            this.gameOverSound = null ;
+            this.music.stop();
+            this.pieces = []; 
+            this.swaps = []; 
+            this.music = null; 
+            this.scene.stop('BonusLevel');
+            this.scene.start('GameOver');
+        }, 3000); 
+
     }
 
 }
