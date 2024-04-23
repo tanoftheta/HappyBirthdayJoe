@@ -94,10 +94,6 @@ class BonusLevel extends Phaser.Scene{
     }
 
     update(){
-
-        if (this.movesLeft <= 0){
-            this.gameOver();
-        }
         this.movesLeftText.setText(`moves left: ${this.movesLeft}`); 
         const expectedTextureKeys = [
             'joe1', 'joe2', 'joe3', 
@@ -112,6 +108,9 @@ class BonusLevel extends Phaser.Scene{
             const expectedTextureKey = expectedTextureKeys[i];
             if (piece.texture.key !== expectedTextureKey) {
                 allPiecesCorrectlyPlaced = false;
+                if (this.movesLeft <= 0){
+                    this.gameOver();
+                }
                 break;
             }
         }
